@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <ImageButton 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:id="@+id/login"
+        android:layout_centerInParent="true"
+        android:src="@drawable/login"
+        android:background="@color/transparent"
+        />
+    
+    <ImageButton 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_status"
+        android:id="@+id/update_status"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"  
+        android:src="@drawable/share"
+        android:background="@color/transparent"      
+        />
+
+    <ImageView
+        android:id="@+id/myimage"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_alignParentTop="true"
+        android:layout_margin="15dp"        
+        android:src="@drawable/myimg"
+        android:layout_centerHorizontal="true" />
+    
+    <TextView
+        android:id="@+id/dummy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myimage"
+        android:text="@string/dummy"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dip"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/light_grey" />
+        
+    <ImageButton 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/like"
+        android:id="@+id/like"
+        android:src="@drawable/like"  
+        android:background="@color/transparent"  
+        android:layout_centerHorizontal="true"    
+        android:layout_below="@+id/dummy"
+        />
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/like"
+        android:layout_marginTop="15dip"
+        android:id="@+id/div1"
+        android:background="@color/very_light_grey"
+        />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/div1"
+        android:layout_marginTop="10dip"
+        android:id="@+id/welcome"
+        android:textStyle="bold"
+        />
+
+    
+</RelativeLayout>

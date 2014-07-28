@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="light_grey">#666</color>
+    <color name="dark_grey">#333</color>
+    <color name="very_light_grey">#999999</color>
+    <color name="transparent">#00000000</color>
+    <color name="android_blue">#5cbdde</color> 
+    <color name="blue">#70aabe</color>
+    <color name="wine_red">#76281b</color>
+    <color name="dark_brown">#6c2416</color>   
+    <color name="green">#4ebd94</color>
+    <color name="dark_green">#3ab48b</color>
+    <color name="pink">#d33f6f</color>
+    <color name="light_blue">#62bade</color>
+    <color name="red">#e55063</color>
+    <color name="yellow">#e4bf29</color>
+    <color name="purple">#9b6dae</color>
+    <color name="steel_grey">#dfdfdf</color>
+    
+    <color name="actionbar_separator">#00000000</color>
+</resources>

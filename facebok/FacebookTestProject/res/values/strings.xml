@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">FacebookTestProject</string>
+	<string name="update_status">Update status</string>
+	<string name="like">Like</string>
+	<string name="login">Login</string>
+	<string name="dummy">Dummy facebook test</string>
+	<string name="app_id">296289490535613</string>
+</resources>
