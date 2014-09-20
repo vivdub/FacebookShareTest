@@ -1,22 +1,29 @@
 package com.facebook.test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.FacebookException;
 import com.facebook.Request;
+import com.facebook.Request.GraphUserListCallback;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.internal.SessionTracker;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.FacebookDialog;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 
 /**
  * @author vivek 
@@ -25,6 +32,7 @@ import com.facebook.widget.FacebookDialog;
 public class FacebookTestActivity extends Activity{
 
 	private UiLifecycleHelper uiHelper;
+	private SessionTracker tracker;
 
 	//=============================================
 	@Override
@@ -54,37 +62,43 @@ public class FacebookTestActivity extends Activity{
 			public void onClick(View arg0) {
 				likePage();				
 			}
-		});
+		});		
 	}
 
 	//=============================================
 	private void login(){
 		// start Facebook Login
-		Session.openActiveSession(this, true, new Session.StatusCallback() {
+		Session.openActiveSession(this, true, Arrays.asList("public_profile, email,user_friends"),
+				new Session.StatusCallback() {
 
 			// callback when session changes state
 			@Override
 			public void call(Session session, SessionState state, Exception exception) {
 				if (session.isOpened()) {
 
-					// make request to the /me API
-					Request.newMeRequest(session, new Request.GraphUserCallback() {
-
-						// callback after Graph API response with user object
-						@Override
-						public void onCompleted(GraphUser user, Response response) {
-							if (user != null) {
-								TextView welcome = (TextView) findViewById(R.id.welcome);
-								welcome.setText("Welcome " + user.getName() + "!");
-								onLogin();
-							}
-						}
-					}).executeAsync();
+					getFriends();
 				}
 			}
 		});
 	}
-
+	
+	//=============================================
+	private void getFriends(){        
+		
+		Request.newMyFriendsRequest(Session.getActiveSession(), new GraphUserListCallback() {
+			
+			@Override
+			public void onCompleted(List<GraphUser> users, Response response) {
+				JsonParser p = new JsonParser();
+				JsonArray arr = p.parse(response.getGraphObject().getProperty("data").toString()).getAsJsonArray();
+				int size = arr.size();
+				for(int i=0;i<size;i++){
+					Log.i("facebook","Name: "+arr.get(i).getAsJsonObject().get("name").getAsString());
+				}
+			}
+		}).executeAsync();
+	}
+	
 	//=============================================
 	private void onLogin(){
 		findViewById(R.id.update_status).setVisibility(View.VISIBLE);
